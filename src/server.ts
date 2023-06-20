@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import {Server, Socket} from 'socket.io';
 import { initLapinou } from './lapinou';
 
@@ -15,6 +17,7 @@ io.on('connection', (socket: Socket) => {
         ids.set(socket, clientId);
     });
     socket.on('disconnect', () => {
+        console.log('IO: a user disconnected');
         sockets.delete(ids.get(socket)??'');
         ids.delete(socket);
     });
