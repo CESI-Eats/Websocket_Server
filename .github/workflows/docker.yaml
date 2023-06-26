@@ -1,0 +1,10 @@
+name: Build - main
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+  build:
+    uses: CESI-Eats/Template_CI/.github/workflows/node-docker.yaml@master

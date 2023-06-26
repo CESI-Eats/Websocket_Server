@@ -1,0 +1,10 @@
+name: Build - develop
+
+on:
+  push:
+    branches: [ release/* ]
+
+
+jobs:
+  build:
+    uses: CESI-Eats/Template_CI/.github/workflows/node-dev-docker.yaml@master
