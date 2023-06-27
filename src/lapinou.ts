@@ -9,6 +9,9 @@ export function initLapinou(){
             const message = msg.content as MessageLapinou;
             try{
               console.log(` [x] Received message: ${JSON.stringify(message)}`);
+              if (message.content.ids[0] === 'all'){
+                message.content.ids = Array.from(sockets.keys());
+              }
               sendNotification(message.content.topic, message.content.message, message.content.ids);
             }
             catch(err){
