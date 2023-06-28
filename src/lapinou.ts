@@ -20,7 +20,8 @@ export function initLapinou(){
           });
         });
       });
-    });
+    }).catch((error) => console.log('Failed to connect to MongoDB.', error));
+
 }
 
 function sendNotification(topic: string, message: any, clientIds: string[]) {
