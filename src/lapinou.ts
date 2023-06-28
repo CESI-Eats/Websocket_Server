@@ -20,8 +20,6 @@ export function initLapinou(){
           });
         });
       });
-    }).catch((err) => {
-        console.error('Failed to connect to rabbitMQ');
     });
 }
 
