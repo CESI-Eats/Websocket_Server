@@ -1,0 +1,21 @@
+name: Build - develop
+
+on:
+  push:
+    branches: [ release/* ]
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    outputs:
+      VERSION: ${{ steps.extract-version.outputs.VERSION }}
+    steps:
+    - name: Extract release version
+      id: extract-version
+      run: echo "VERSION=${GITHUB_REF#refs/heads/release/}" >> $GITHUB_OUTPUT
+
+  docker:
+    needs: get-version
+    uses: CESI-Eats/Template_CI/.github/workflows/node-dev-docker.yaml@master
+    with:
+      version: ${{ needs.get-version.outputs.VERSION }}
